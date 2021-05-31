@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Git使用说明</title>
-    <url>/2021/05/26/Git%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</url>
-    <content><![CDATA[<h3 id="github无法访问"><a href="#github无法访问" class="headerlink" title="github无法访问"></a>github无法访问</h3><p>修改C:\Windows\System32\drivers\etc\hosts（MAC用终端修改：sudo vim /etc/hosts），追加下面两行：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">140.82.112.4  github.com</span><br><span class="line">199.232.69.194 github.global.ssl.fastly.net</span><br></pre></td></tr></table></figure>
-
-<p>github.com从 <a href="https://github.com.ipaddress.com/">https://github.com.ipaddress.com/</a> 中找<br>github.global.ssl.fastly.net从 <a href="https://fastly.net.ipaddress.com/github.global.ssl.fastly.net">https://fastly.net.ipaddress.com/github.global.ssl.fastly.net</a> 中找</p>
-<h3 id="修改git默认编辑器"><a href="#修改git默认编辑器" class="headerlink" title="修改git默认编辑器"></a>修改git默认编辑器</h3><p>设置默认编辑器为notepad++</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global core.editor &quot;&#x27;D:\downloads\devsoftwares\npp.7.8.9.bin.x64\notepad++.exe&#x27; -multiInst -notabbar -nosession -noPlugin &#x27;$*&#x27;&quot;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>windows常用说明</title>
     <url>/2021/05/27/windows%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE/</url>
     <content><![CDATA[<p>.net框架介绍，IIS服务介绍</p>
@@ -78,6 +63,21 @@
         <tag>windows</tag>
         <tag>.NET</tag>
         <tag>IIS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git使用说明</title>
+    <url>/2021/05/26/Git%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</url>
+    <content><![CDATA[<h3 id="github无法访问"><a href="#github无法访问" class="headerlink" title="github无法访问"></a>github无法访问</h3><p>修改C:\Windows\System32\drivers\etc\hosts（MAC用终端修改：sudo vim /etc/hosts），追加下面两行：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">140.82.112.4  github.com</span><br><span class="line">199.232.69.194 github.global.ssl.fastly.net</span><br></pre></td></tr></table></figure>
+
+<p>github.com从 <a href="https://github.com.ipaddress.com/">https://github.com.ipaddress.com/</a> 中找<br>github.global.ssl.fastly.net从 <a href="https://fastly.net.ipaddress.com/github.global.ssl.fastly.net">https://fastly.net.ipaddress.com/github.global.ssl.fastly.net</a> 中找</p>
+<h3 id="修改git默认编辑器"><a href="#修改git默认编辑器" class="headerlink" title="修改git默认编辑器"></a>修改git默认编辑器</h3><p>设置默认编辑器为notepad++</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global core.editor &quot;&#x27;D:\downloads\devsoftwares\npp.7.8.9.bin.x64\notepad++.exe&#x27; -multiInst -notabbar -nosession -noPlugin &#x27;$*&#x27;&quot;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>git</tag>
       </tags>
   </entry>
 </search>
