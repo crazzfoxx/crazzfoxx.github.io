@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>windows常用说明</title>
+    <url>/2021/05/27/windows%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE/</url>
+    <content><![CDATA[<p>.net框架介绍，IIS服务介绍</p>
+<span id="more"></span>
+
+
+
+<h3 id="NET相关概念"><a href="#NET相关概念" class="headerlink" title=".NET相关概念"></a>.NET相关概念</h3><hr>
+<h4 id="NET基础架构"><a href="#NET基础架构" class="headerlink" title=".NET基础架构"></a>.NET基础架构</h4><p><img src="https://raw.githubusercontent.com/crazzfoxx/image-hosting/master/image.40rtb6abqiw0.png" alt=".net基础架构"></p>
+<p>.net standard library定义了一系列标准函数接口</p>
+<p>.net framework, .net core, xmarin都实现了该标准定义的接口</p>
+<p>asp.net是.net framework框架中所提供，开发web应用程序的类别库，可以运行在安装了.net framework的iis服务器上（Windows Only）或在Mono平台上跨平台运行</p>
+<p>.net core是为了微软因应云端化所诱发的多作业平台集成与开发能力特别开发的新一代.net框架。</p>
+<p><img src="https://raw.githubusercontent.com/crazzfoxx/image-hosting/master/image.2ahlb2hl51no.png"></p>
+<h3 id="IIS相关概念"><a href="#IIS相关概念" class="headerlink" title="IIS相关概念"></a>IIS相关概念</h3><hr>
+<p>IIS（Internet Information Serives）是一种Web服务组件，其中包括Web服务器、FTP服务器、NNTP服务器和SMTP服务器，分别用于网页浏览、文件传输、新闻服务和邮件发送等方面，它使得在网络（包括互联网和局域网）上发布信息成了一件很容易的事。</p>
+<h4 id="启用IIS服务（win10）"><a href="#启用IIS服务（win10）" class="headerlink" title="启用IIS服务（win10）"></a>启用IIS服务（win10）</h4><hr>
+<p>控制面板-程序-启用或关闭windows功能</p>
+<p><img src="https://raw.githubusercontent.com/crazzfoxx/image-hosting/master/image.6yzgt1hvo1c0.png" alt="win10启用iis服务"></p>
+<h4 id="IIS网站配置"><a href="#IIS网站配置" class="headerlink" title="IIS网站配置"></a>IIS网站配置</h4><blockquote>
+<p><strong>新建IIS网站</strong></p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/crazzfoxx/image-hosting/master/image.6obk06rumko0.png"></p>
+<p>打开IIS管理器，右键<u>网站</u>，选择<u>添加网站</u>，添加信息后点击完成启动网站</p>
+<p><img src="https://raw.githubusercontent.com/crazzfoxx/image-hosting/master/image.5faxpwlqma80.png"></p>
+<h4 id="2-3-IIS网站配置常见问题"><a href="#2-3-IIS网站配置常见问题" class="headerlink" title="2.3 IIS网站配置常见问题"></a>2.3 IIS网站配置常见问题</h4><blockquote>
+<p><strong>IIS7/iis7.5 HTTP Error 500.19 配置错误由于权限不足而无法读取配置文件</strong></p>
+</blockquote>
+<p>网站物理路径（recursively）需要分别给用户IIS_IUSERS/IUSER/NETWORK SERVICE设置<u>修改</u>权限</p>
+<p><img src="https://raw.githubusercontent.com/crazzfoxx/image-hosting/master/image.40swavl993q0.png"></p>
+<blockquote>
+<p><strong>在唯一密钥属性”fileExtension”设置为”.mp4”时，无法添加类型为”mimeMap”的重复集合项</strong></p>
+</blockquote>
+<p>为了兼容低版本IIS，档案系统注册了额外的mimeType，一些mimeType在windows10系统是默认注册的，导致重复添加mimeType，无法访问网站的js，css无法加载。</p>
+<p>打开网站根目录\web.config，找到如下所示根据情况配置删除。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">1.	<span class="tag">&lt;<span class="name">staticContent</span>&gt;</span></span><br><span class="line">2.	    <span class="tag">&lt;<span class="name">mimeMap</span> <span class="attr">fileExtension</span>=<span class="string">&quot;.mp4&quot;</span> <span class="attr">mimeType</span>=<span class="string">&quot;video/mpeg&quot;</span> /&gt;</span></span><br><span class="line">3.	<span class="tag">&lt;/<span class="name">staticContent</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p><strong>64位操作系统下提示Microsoft.Jet.OLEDB.4.0未注册</strong></p>
+</blockquote>
+<p>64位操作系统不支持Microsoft OLE DB Provider for Jet驱动程序</p>
+<p>第一步，确定系统是否安装了Access</p>
+<p>第二步，为IIS网站应用程序启用32位应用程序</p>
+<p><img src="https://raw.githubusercontent.com/crazzfoxx/image-hosting/master/image.3e9ge88gjhu0.png"></p>
+<p><strong>若启用32位后，如果访问iis网站报错：</strong></p>
+<p>当前标识没有对C:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files的写访问权限</p>
+<p><strong>解决：</strong></p>
+<p>若C:\Windows\Microsoft.NET\Framework\v4.0.30319下没有Temporary ASP.NET Files文件夹，新建文件夹并给Everyone写权限，注意只给IIS_IUSERS或NETWORK SERVICE写权限仍然报错</p>
+<blockquote>
+<p><strong>COM 类工厂中 CLSID 为 {000209FF-0000-0000-C000-000000000046} 的组件失败，原因是出现以下错误: 80070005 拒绝访问</strong></p>
+</blockquote>
+<p>IIS网站调用office组件失败</p>
+<p>配置IIS网站应用程序池：启用32位应用程序并设置标识为LocalSystem</p>
+<p><img src="https://raw.githubusercontent.com/crazzfoxx/image-hosting/master/image.3e9ge88gjhu0.png"></p>
+<p><img src="https://raw.githubusercontent.com/crazzfoxx/image-hosting/master/image.25y1jxtvayf4.png"></p>
+]]></content>
+      <tags>
+        <tag>windows</tag>
+        <tag>.NET</tag>
+        <tag>IIS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git使用说明</title>
+    <url>/2021/05/26/Git%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</url>
+    <content><![CDATA[<h3 id="github无法访问"><a href="#github无法访问" class="headerlink" title="github无法访问"></a>github无法访问</h3><p>修改C:\Windows\System32\drivers\etc\hosts（MAC用终端修改：sudo vim /etc/hosts），追加下面两行：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">140.82.112.4  github.com</span><br><span class="line">199.232.69.194 github.global.ssl.fastly.net</span><br></pre></td></tr></table></figure>
+
+<p>github.com从 <a href="https://github.com.ipaddress.com/">https://github.com.ipaddress.com/</a> 中找<br>github.global.ssl.fastly.net从 <a href="https://fastly.net.ipaddress.com/github.global.ssl.fastly.net">https://fastly.net.ipaddress.com/github.global.ssl.fastly.net</a> 中找</p>
+<h3 id="修改git默认编辑器"><a href="#修改git默认编辑器" class="headerlink" title="修改git默认编辑器"></a>修改git默认编辑器</h3><p>设置默认编辑器为notepad++</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global core.editor &quot;&#x27;D:\downloads\devsoftwares\npp.7.8.9.bin.x64\notepad++.exe&#x27; -multiInst -notabbar -nosession -noPlugin &#x27;$*&#x27;&quot;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+</search>
